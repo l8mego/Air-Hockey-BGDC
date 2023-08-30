@@ -23,8 +23,6 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-
-
     void OnMouseDown()
     {
         isDragged = true;
