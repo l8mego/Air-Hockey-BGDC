@@ -20,7 +20,7 @@ public class MenuScript : MonoBehaviour
     IEnumerator PlayGame()
     {
         enterSound.Play();
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return new WaitForSeconds(0.4f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
@@ -28,7 +28,7 @@ public class MenuScript : MonoBehaviour
     {
         quitSound.Play();
        
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return new WaitForSeconds(0.5f);
         Debug.Log("Success");
         Application.Quit();
     }

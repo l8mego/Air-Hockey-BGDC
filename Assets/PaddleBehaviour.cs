@@ -11,9 +11,9 @@ public class PaddleBehaviour : MonoBehaviour
     {
         if(collision.collider.tag == "Puck")
         {
-            if (!sfx.isPlaying){
+            //if (!sfx.isPlaying){
                 sfx.Play(0);
-            }
+            //}
         }
     }
 
