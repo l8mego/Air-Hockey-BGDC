@@ -5,14 +5,32 @@ using UnityEngine.SceneManagement;
 
 public class MenuScript : MonoBehaviour
 {
+    [SerializeField] private AudioSource enterSound;
+    [SerializeField] private AudioSource quitSound;
     public void PlayButton()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+        StartCoroutine(PlayGame());
     }
 
     public void QuitButton()
     {
+        StartCoroutine(QuitGame());
+    }
+
+    IEnumerator PlayGame()
+    {
+        enterSound.Play();
+        yield return new WaitForSecondsRealtime(0.5f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    IEnumerator QuitGame()
+    {
+        quitSound.Play();
+       
+        yield return new WaitForSecondsRealtime(0.5f);
         Debug.Log("Success");
         Application.Quit();
     }
+
 }
