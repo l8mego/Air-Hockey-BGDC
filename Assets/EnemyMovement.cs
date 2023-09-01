@@ -11,7 +11,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private SpriteRenderer area;
     [SerializeField] private Rigidbody2D puck;
     Vector2 targetPos;
-    float starterY = 5f;
+    float starterY = 35f;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +40,7 @@ public class EnemyMovement : MonoBehaviour
                 area.transform.position.y - (area.bounds.size.y / 2),
                 area.transform.position.y + (area.bounds.size.y / 2)));
         }
-        rb2d.MovePosition(Vector2.MoveTowards(rb2d.position, targetPos, speed));
+        rb2d.MovePosition(Vector2.MoveTowards(rb2d.position, targetPos, speed * Time.fixedDeltaTime));
 
     }
 }
