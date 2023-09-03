@@ -9,7 +9,7 @@ public class EnemyMovement : MonoBehaviour
     SpriteRenderer sRenderer;
 
     [SerializeField] private SpriteRenderer area;
-    [SerializeField] private Rigidbody2D puck;
+    [SerializeField] private GameObject puckSpawner;
     Vector2 targetPos;
     float starterY = 35f;
     // Start is called before the first frame update
@@ -22,6 +22,8 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (puckSpawner.transform.childCount <= 0) return;
+        Rigidbody2D puck = findNearestPuck();
         float speed = 0f;
         if(puck.position.y < (area.transform.position.y - (area.bounds.size.y/2)))
         {
@@ -42,5 +44,22 @@ public class EnemyMovement : MonoBehaviour
         }
         rb2d.MovePosition(Vector2.MoveTowards(rb2d.position, targetPos, speed * Time.fixedDeltaTime));
 
+    }
+
+    Rigidbody2D findNearestPuck()//ganti aja kalo ada cara yang lebih efisien
+    {
+        int index = 0;
+        float nearestPuck = Vector2.Distance(puckSpawner.transform.GetChild(0).position, transform.position);
+        
+        for (int i = 1; i < puckSpawner.transform.childCount; i++)
+        {
+            float distance = Vector2.Distance(puckSpawner.transform.GetChild(i).position, transform.position);
+            if (nearestPuck > distance)
+            {
+                index = i;
+                nearestPuck = distance;
+            }
+        }
+        return (puckSpawner.transform.GetChild(index).GetComponent<Rigidbody2D>());
     }
 }
