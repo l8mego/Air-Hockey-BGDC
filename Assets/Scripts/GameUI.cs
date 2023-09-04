@@ -6,9 +6,10 @@ using TMPro;
 public class GameUI : MonoBehaviour
 {
     float oldTime;
-    [SerializeField] float currentTime = 5f;
-    [SerializeField] float interval = 10f;
-    [SerializeField] TMP_Text timeText;
+    [SerializeField] private Powerups powerup;
+    [SerializeField] private float currentTime = 5f;
+    [SerializeField] private float interval = 10f;
+    [SerializeField] private TMP_Text timeText;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +25,7 @@ public class GameUI : MonoBehaviour
         oldTime = currentTime;
         if (currentTime <= 0)
         {
-            //todo: trigger powerups too
+            powerup.triggerRandomPowerup();
             currentTime = interval;
         }
     }

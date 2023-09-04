@@ -10,12 +10,25 @@ public class PuckSpawner : MonoBehaviour
     {
         Instantiate(puck, transform);
         Instantiate(puck, transform);
-        Instantiate(puck, transform);
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void spawnPuck()
+    {
+        Instantiate(puck, transform);
+    }
+
+    public void duplicatePuck()
+    {
+        int initialPuck = transform.childCount;
+        for (int i = 0; i < initialPuck; i++)
+        {
+            Instantiate(puck, transform.GetChild(i).position, transform.rotation, transform);
+        }
     }
 }
