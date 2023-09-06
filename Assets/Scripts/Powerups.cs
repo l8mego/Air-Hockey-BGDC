@@ -10,6 +10,13 @@ public class Powerups : MonoBehaviour
     {
         //todo: add more powerups and make it randomized
         //puckSpawner.spawnPuck();
-        puckSpawner.duplicatePuck();
+        if (puckSpawner.maximumPuckReached())//for testing only
+        {
+            puckSpawner.clearPuck();
+        }
+        else
+        {
+            puckSpawner.duplicatePuck();
+        }
     }
 }
