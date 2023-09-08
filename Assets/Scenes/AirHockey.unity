@@ -312,7 +312,7 @@ GameObject:
   - component: {fileID: 74035491}
   m_Layer: 0
   m_Name: EnemyPaddle
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1387,7 +1387,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -167.70299, y: -34.203003}
+  m_AnchoredPosition: {x: -167.70297, y: -34.203003}
   m_SizeDelta: {x: 111.492, y: 68.406}
   m_Pivot: {x: -1.5041724, y: 0.5}
 --- !u!114 &647132224
@@ -1912,6 +1912,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puckSpawner: {fileID: 1947215226}
+  player: {fileID: 1899300436}
+  enemy: {fileID: 74035490}
 --- !u!4 &1124601339
 Transform:
   m_ObjectHideFlags: 0
@@ -1987,11 +1989,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerPaddle
       objectReference: {fileID: 0}
+    - target: {fileID: 5886593246173688313, guid: 9cd781f8d28e7ab4d95e89b6e019611f, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cd781f8d28e7ab4d95e89b6e019611f, type: 3}
+--- !u!1 &1899300436 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5886593246173688313, guid: 9cd781f8d28e7ab4d95e89b6e019611f, type: 3}
+  m_PrefabInstance: {fileID: 1328853562}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1947215225
 GameObject:
   m_ObjectHideFlags: 0
@@ -2043,6 +2054,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 421147053}
+  - {fileID: 1328853562}
   - {fileID: 74035497}
   - {fileID: 1947215227}
   - {fileID: 159280218}
@@ -2052,4 +2064,3 @@ SceneRoots:
   - {fileID: 412496983}
   - {fileID: 1124601339}
   - {fileID: 752934671}
-  - {fileID: 1328853562}

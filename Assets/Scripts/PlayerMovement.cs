@@ -50,4 +50,9 @@ public class PlayerMovement : MonoBehaviour
             rb2d.MovePosition(mousePos);
         }
     }
+
+    public void resetDrag()
+    {
+        isDragged = false;
+    }
 }
