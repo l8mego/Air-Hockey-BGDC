@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
         col2d = GetComponent<Collider2D>();
         sRenderer = GetComponent<SpriteRenderer>();
         mainCam = Camera.main;
+       
     }
 
 

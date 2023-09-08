@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AirHockey.unity
     guid: 85f902b41ee611e49b4aaa9011a90f90
+  - enabled: 1
+    path: Assets/Scenes/MultiplayerMenu.unity
+    guid: f91903fdeb85dae43ac1c0322008305d
   m_configObjects: {}
