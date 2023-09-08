@@ -35,5 +35,6 @@ public class PaddleBehaviour : MonoBehaviour
         paddleTransform.localScale = new Vector3(3f, 3f, 1f);
     }
 
+ 
     // Update is called once per frame
 }

@@ -10,6 +10,9 @@ public class Powerups : MonoBehaviour
     [SerializeField] private GameObject enemy;
     PaddleBehaviour enemyPaddle;
 
+    [SerializeField] private float playerStunDuration = 1f;
+    [SerializeField] private float enemyStunDuration = 1f;
+
     private void Start()
     {
         Random.InitState((int)System.DateTime.Now.Ticks);
@@ -19,13 +22,14 @@ public class Powerups : MonoBehaviour
     public void triggerRandomPowerup()
     {
         resetPowerups();
+        
         //todo: add more powerups and make it randomized
         //puckSpawner.spawnPuck();
-       /* if (puckSpawner.maximumPuckReached())//for testing only
+        /*if (puckSpawner.maximumPuckReached())//for testing only
         {
-            *//*puckSpawner.clearPuck();*//*
-        }
-        else
+            puckSpawner.clearPuck();
+        }*/
+        /*else
         {*/
             int randomNum = Random.Range(0, 5);
             switch (randomNum)
@@ -43,18 +47,18 @@ public class Powerups : MonoBehaviour
                     enemyPaddle.paddleSizeUp();
                     break;
                 case 3:
-                    Debug.Log("Powerups Triggered: Stun Player Paddle For 1 Second");
+                    Debug.Log("Powerups Triggered: Stun Player Paddle");
                     stunPaddle(player);
                     break;
                 case 4:
-                    Debug.Log("Powerups Triggered: Stun Enemy Paddle For 3 Second");
+                    Debug.Log("Powerups Triggered: Stun Enemy Paddle");
                     stunPaddle(enemy);
                     break;
                 default:
                     Debug.Log("");
                     break;
-            /*}*/
-        }
+            }
+        /*}*/
     }
 
     void stunPaddle(GameObject paddle)
@@ -71,17 +75,17 @@ public class Powerups : MonoBehaviour
 
     IEnumerator StunPlayer()
     {
-        player.GetComponent<PlayerMovement>().enabled = false;
+        player.GetComponent<Rigidbody2D>().constraints |= RigidbodyConstraints2D.FreezePosition;
         player.GetComponent<PlayerMovement>().resetDrag();
-        yield return new WaitForSeconds(1f);
-        player.GetComponent<PlayerMovement>().enabled = true;
+        yield return new WaitForSeconds(playerStunDuration);
+        player.GetComponent<Rigidbody2D>().constraints &= RigidbodyConstraints2D.FreezeRotation;
     }
 
     IEnumerator StunEnemy()
     {
-        enemy.GetComponent<EnemyMovement>().setStun(true);
-        yield return new WaitForSeconds(3f);
-        enemy.GetComponent<EnemyMovement>().setStun(false);
+        enemy.GetComponent<Rigidbody2D>().constraints |= RigidbodyConstraints2D.FreezePosition;
+        yield return new WaitForSeconds(enemyStunDuration);
+        enemy.GetComponent<Rigidbody2D>().constraints &= RigidbodyConstraints2D.FreezeRotation;
     }
 
     void resetPowerups()

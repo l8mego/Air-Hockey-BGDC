@@ -12,7 +12,6 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private GameObject puckSpawner;
     Vector2 targetPos;
     float starterY = 35f;
-    bool isStunned = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +22,6 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (isStunned) return;
         if (puckSpawner.transform.childCount <= 0) return;
         Rigidbody2D puck = findNearestPuck();
         float speed = 0f;
@@ -65,8 +63,4 @@ public class EnemyMovement : MonoBehaviour
         return (puckSpawner.transform.GetChild(index).GetComponent<Rigidbody2D>());
     }
 
-    public void setStun(bool stunState)
-    {
-        isStunned = stunState;
-    }
 }
